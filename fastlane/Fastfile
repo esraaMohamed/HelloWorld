@@ -1,0 +1,42 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+ 
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+fastlane_version "2.104.0"
+ 
+default_platform(:ios)
+ 
+platform :ios do
+  desc "build app"
+  lane :xbeta do
+      xcodebuild(
+        clean: true,
+        scheme: 'HelloWorld',
+        project: 'HelloWorld.xcodeproj')
+   end
+  lane :bld do
+      scan(
+        workspace: "HelloWorld.xcworkspace",
+        scheme: "HelloWorld",
+        devices: ["iPhone XS Max"]
+	)
+   end
+  lane :beta do
+      build_app(scheme: 'HelloWorld',
+      clean: true,
+      exportOptions: [
+          "signingStyle": "manual"]
+  )
+  end
+end
