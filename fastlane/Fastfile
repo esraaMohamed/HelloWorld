@@ -21,8 +21,8 @@ platform :ios do
   desc "build app"
   lane :build do
     xcbuild(
-        workspace: "HelloWorld.xcworkspace",
-        scheme: "HelloWorld.xcscheme",
+        project: "HelloWorld.xcodeproj",
+        scheme: "HelloWorld",
         configuration: "Debug",
         xcargs: "-sdk iphonesimulator SYMROOT='/var/tmp/'"
     )
