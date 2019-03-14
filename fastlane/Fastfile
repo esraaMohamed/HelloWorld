@@ -14,29 +14,20 @@
 # update_fastlane
 
 fastlane_version "2.104.0"
- 
+
 default_platform(:ios)
  
 platform :ios do
   desc "build app"
-  lane :xbeta do
-      xcodebuild(
-        clean: true,
-        scheme: 'HelloWorld',
-        project: 'HelloWorld.xcodeproj')
-   end
-  lane :bld do
-      scan(
+  lane :build do
+    xcbuild(
         workspace: "HelloWorld.xcworkspace",
         scheme: "HelloWorld",
-        devices: ["iPhone XS Max"]
-	)
-   end
-  lane :beta do
-      build_app(scheme: 'HelloWorld',
-      clean: true,
-      exportOptions: [
-          "signingStyle": "manual"]
-  )
-  end
+        configuration: "Debug",
+        xcargs: "-sdk iphonesimulator SYMROOT='/var/tmp/'"
+    )
+    copy_artifacts(
+        target_path:'../git/automation/resources',
+        artifacts:["/var/tmp/Debug-iphonesimulator/*.app"])
+ end
 end

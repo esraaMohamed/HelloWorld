@@ -1,6 +1,2 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<testsuites name='HelloWorldUITests.xctest' tests='1' failures='0'>
-  <testsuite name='HelloWorldUITests.HelloWorldUITests' tests='1' failures='0'>
-    <testcase classname='HelloWorldUITests.HelloWorldUITests' name='testExample' time='3.607'/>
-  </testsuite>
-</testsuites>
+<testsuites tests='0' failures='0'/>
